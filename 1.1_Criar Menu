@@ -1,0 +1,100 @@
+/*Criação de uma aplicação composta por um menu de opções abaixo:
+
+1- Cadastrar um item no vetor
+2- Listar um item no vetor
+3- Alterar um item no vetor
+4- Excluir um item no vetor.
+5 - Sair
+
+1- Cadastrar um item no vetor
+O sistema deverá solicitar as informações do cadastro
+O sistema deverá armazenar o valor na próxima posição vaga do vetor,
+O sistema deverá retornar ao menu principal
+
+2- Cadastrar um item no vetor
+O sistema deverá listar todas as opções armazenadas no vetor
+
+
+3- Alterar um item
+O sistema deverá solicitar a posição a ser alterada.
+O sistema deverá solicitar a informação a ser gravada na posição informado
+O sistema deverá armazenar o valor na posição informada,
+O sistema deverá retornar ao menu principal
+
+4- Excluir um item
+O sistema deverá solicitar a posição a ser excluida.
+O sistema deverá organizar o vetor  eliminando a posição a ser excluida,
+O sistema deverá retornar ao menu principal
+
+5 - Sair
+O sistema encerra o Programa
+*/
+
+#include <stdio.h>
+#define tam 4
+
+int main()
+{
+    int opcao, i, valor[tam], x, posicao, continua, alteracao;
+    
+    while(1){
+        
+        printf("Digite uma opcao do menu:\n1 - Cadastrar um item no vetor\n2 - Listar um item no vetor\n3 - Alterar um item no vetor\n4 - Excluir um item no vetor\n5 - Sair\n\n");
+        scanf("%d", &opcao);
+        
+        switch (opcao) {
+            case(1):
+                for (i=0; i<tam; i++){
+                    printf("Digite um valor para cadastro: ");
+                    scanf("%d", &valor[i]);
+                }
+                break;
+            case(2):
+                for(i=0; i<tam; i++){
+                    printf("Posicao: %d\t valor: %d\t\n", i, valor[i]);
+                }
+                break;
+            case(3):
+                printf("Indique a posicao do vetor a ser alterada: ");
+                scanf("%d", &x);
+                for(i=0; i<tam; i++){
+                    if (valor[i] == x){
+                       printf("Indique o valor para alteracao: ");
+                       scanf("%d", &alteracao);
+                    }
+                    valor[x] = alteracao;
+                }
+                for(i=0; i<tam; i++){
+                    printf("Posição %d valor %d\n", i, valor[i]);
+                }
+                break;
+            case(4):
+                printf("Indique a posicao do vetor a ser excluida: ");
+                scanf("%d", &x);
+                for(i=0; i<tam; i++){
+                    if(valor[i] == x){
+                        valor[x] = -1;
+                    }
+                }
+                for(i=0; i<tam; i++){
+                    if(valor[i] >=0){
+                        printf("%d\n", valor[i]);
+                    }
+                }
+                break;
+            case(5):
+                printf("Sair\n");
+                break;
+        }
+        do{
+            printf("Deseja continuar: [1-Sim], [2-Nao] \n");
+            scanf("%d", &continua);
+        } while (continua != 1 && continua != 2);
+        if (continua == 1)
+            continue;
+        else
+            break;
+    }
+    
+    return 0;
+}
